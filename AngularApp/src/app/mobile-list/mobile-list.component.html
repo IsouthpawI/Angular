@@ -1,0 +1,41 @@
+<div class="component">
+  <h1>Mobiles</h1>
+
+  <div class="from">
+    <mat-form-field class="example-full-width" style="margin-right: 50px; font-size: 140%">
+      <textarea matInput placeholder="Enter count of mobiles on page" type="text"
+                [(ngModel)]="numberOfShowedMobiles"></textarea>
+    </mat-form-field>
+    <button mat-raised-button (click)="changeSettings(numberOfShowedMobiles)" style=" color: black" color="accent">
+      SAVE
+    </button>
+  </div>
+
+  <div class="mobiles-detail">
+    <div *ngFor="let mobile of mobiles | async">
+      <app-mobile-details [mobile]='mobile'></app-mobile-details>
+    </div>
+  </div>
+
+  <div class="button-row">
+    <mat-grid-list cols="3" rowHeight="5:4">
+      <mat-grid-tile>
+        <button mat-fab style="background: #310e5a; color: white" (click)='previousMobiles()'>
+          <mat-icon aria-label="keyboard_arrow_left">keyboard_arrow_left</mat-icon>
+        </button>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <button class="i" mat-raised-button color="warn" (click)='deleteMobiles()'>DELETE ALL
+        </button>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <button style="background: #310e5a; color: white" mat-fab (click)='nextMobiles()'>
+          <mat-icon aria-label="keyboard_arrow_right">keyboard_arrow_right</mat-icon>
+        </button>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+
+</div>
+
+

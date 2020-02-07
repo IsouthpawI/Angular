@@ -1,0 +1,47 @@
+<div class="form">
+  <h1>Create Mobile</h1>
+  <mat-card style="font-size: 140%">
+    <div [hidden]="submitted">
+      <form (ngSubmit)="onSubmit()">
+        <div class="example-container">
+          <mat-form-field>
+            <input matInput type="text" pattern="^[a-zA-Z]+$" placeholder="First Name" class="form-control"
+                   id="firstName" required [(ngModel)]="mobile.firstName"   name="firstName">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput type="text" pattern="^[a-zA-Z]+$" placeholder="Last Name" class="form-control" id="lastName"
+                   required [(ngModel)]="mobile.lastName" name="lastName">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput type="text" pattern="^[a-zA-Z0-9,\.\s]+$" placeholder="Address" class="form-control"
+                   id="address" required [(ngModel)]="mobile.address" name="address">
+          </mat-form-field>
+          <mat-form-field hintLabel="Max 9 characters">
+            <input matInput type="text" maxlength="9" pattern="[0-9]{9}" placeholder="Mobile Number" class="form-control"
+                   id="phonenumberm" #inputM [formControl]="phoneNumberMCheck" required [(ngModel)]="mobile.phoneNumberM" name="phonenumberm">
+            <!--<mat-hint align="end">{{inputM.value?.length || 0}}/9</mat-hint>-->
+            <mat-error *ngIf="phoneNumberMCheck.invalid">{{getErrorMessageMobilePhone()}}</mat-error>
+          </mat-form-field>
+          <mat-form-field hintLabel="Max 11 characters">
+            <input matInput type="text" [formControl]="phoneNumberHCheck" maxlength="11" pattern="[0-9]{11}" placeholder="Home Phone Number" class="form-control"
+                   id="phonenumberh" #inpuH required [(ngModel)]="mobile.phoneNumberH" name="phonenumberh">
+            <!--<mat-hint align="end">{{inputH.value?.length || 0}}/11</mat-hint>-->
+            <mat-error *ngIf="phoneNumberHCheck.invalid">{{getErrorMessageHomePhone()}}</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput type="date" pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])"
+                   placeholder="Date" class="form-control" id="added" required [(ngModel)]="mobile.added" name="added">
+          </mat-form-field>
+        </div>
+        <div style="text-align: right">
+          <button mat-raised-button color="accent" type="submit">OK</button>
+        </div>
+      </form>
+    </div>
+
+    <div [hidden]="!submitted">
+      <h4>You submitted successfully!</h4>
+      <button mat-raised-button color="accent" (click)="newMobile()">ADD</button>
+    </div>
+  </mat-card>
+</div>

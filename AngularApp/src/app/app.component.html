@@ -1,0 +1,24 @@
+<mat-toolbar
+  style="font-size: 150%; box-shadow: 0 4px 8px 0 rgba(238,127,108,0.46), 0 6px 20px 0 rgba(29,29,29,0.96); background: #6A1B9A; color: white">
+  {{title}}
+</mat-toolbar>
+
+
+<!--<mat-toolbar color="primary">-->
+  <!--<div>{{title}}</div>-->
+  <!--<span class="nav-tool-items">-->
+    <!--<a mat-button routerLink="login" routerLinkActive="active">Log in</a>-->
+    <!--<a mat-button mat-raised-button routerLink="register" routerLinkActive="active">Register</a>-->
+  <!--</span>-->
+<!--</mat-toolbar>-->
+
+
+
+<div>
+  <nav mat-tab-nav-bar mat-stretch-tabs style="background: #310e5a">
+    <a mat-tab-link routerLink="add" role="button" routerLinkActive="active">Add</a>
+    <a mat-tab-link routerLink="mobile" role="button" routerLinkActive="active">Mobiles</a>
+    <a mat-tab-link routerLink="findbyfirstname" role="button" routerLinkActive="active">Search</a>
+  </nav>
+  <router-outlet></router-outlet>
+</div>

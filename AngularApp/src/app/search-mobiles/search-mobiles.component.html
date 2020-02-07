@@ -1,0 +1,113 @@
+<div class="form">
+  <h1>Search Mobiles</h1>
+  <mat-card style="font-size: 140%">
+    <div>
+      <form (ngSubmit)="onSubmit()">
+        <div class="example-container">
+          <mat-form-field>
+            <input matInput type="text" class="form-control" placeholder="First Name" id="firstName"
+                   [(ngModel)]="firstName" name="firstName">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput type="text" class="form-control" placeholder="Last Name" id="lastName"
+                   [(ngModel)]="lastName" name="lastName">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput type="text" class="form-control" placeholder="Address" id="address"
+                   [(ngModel)]="address" name="address">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput type="text" class="form-control" placeholder="Mobile Number" id="phoneNumberM"
+                   [(ngModel)]="phoneNumberM" name="phoneNumberM">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput type="text" class="form-control" placeholder="Home Number" id="phoneNumberH"
+                   [(ngModel)]="phoneNumberH" name="phoneNumberH">
+          </mat-form-field>
+        </div>
+        <div style="text-align: right">
+          <button mat-raised-button color="accent" type="submit">OK</button>
+        </div>
+      </form>
+    </div>
+  </mat-card>
+  <br>
+  <br>
+  <div *ngFor="let mobile of mobiles">
+    <mat-card class="example-card">
+      <mat-card-title>
+        <div>
+          <label>First Name: </label> {{mobile.firstName}}
+        </div>
+        <div>
+          <label>Last Name: </label> {{mobile.lastName}}
+        </div>
+        <div>
+          <label>Address: </label> {{mobile.address}}
+        </div>
+        <div>
+          <label>Mobile number: </label> {{mobile.phoneNumberM}}
+        </div>
+        <div>
+          <label>Home phone number: </label> {{mobile.phoneNumberH}}
+        </div>
+        <div>
+          <label>Date: </label> {{mobile.added}}
+        </div>
+      </mat-card-title>
+      <mat-card-actions>
+        <button mat-raised-button style=" color: black; margin-right: 10px " color="accent"><a
+          routerLink="/edit/{{mobile.phoneNumberM}} ">EDIT</a></button>
+        <button mat-raised-button color="warn" (click)='deleteMobile(mobile.phoneNumberM)'>DELETE</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+  <div [hidden]="submitted">
+    <mat-card style="font-size: 140%">
+      <div>
+        <form (ngSubmit)="onSubmitNewOne()">
+          <div class="example-container">
+            <mat-form-field>
+              <input matInput type="text" class="form-control" placeholder="First Name" id="firstNamep"
+                     [(ngModel)]="firstNameP" name="firstNameP">
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput type="text" class="form-control" placeholder="Last Name" id="lastNamep"
+                     [(ngModel)]="lastNameP" name="lastNameP">
+            </mat-form-field>
+
+          </div>
+          <div style="text-align: right">
+            <button mat-raised-button color="accent" type="submit">OK</button>
+          </div>
+        </form>
+      </div>
+    </mat-card>
+  </div>
+
+  <br>
+  <br>
+
+  <div [hidden]="!submitted">
+    <mat-card class="example-card">
+      <mat-card-title>
+        <div>
+          <label>First Name: </label> {{firstNameP}}
+        </div>
+        <div>
+          <label>Last Name: </label> {{lastNameP}}
+        </div>
+        <div *ngFor="let personNumber of personNumbers">
+          <div>
+            <label>Mobile number: </label> {{personNumber.mobile.phoneNumberM}}
+          </div>
+        </div>
+
+      </mat-card-title>
+      <mat-card-actions>
+        <button mat-raised-button style=" color: black; margin-right: 10px " color="accent" (click)='changeSubmit()'>NEW SEARCH</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

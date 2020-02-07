@@ -1,0 +1,28 @@
+.example-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+button {
+  font-weight: bold;
+}
+
+.form {
+  margin: 2% 20% 10% 20%;
+  padding: 0;
+}
+
+.example-card {
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+a:link, a:visited {
+  //background-color: #f44336;
+  color: black;
+  //padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
